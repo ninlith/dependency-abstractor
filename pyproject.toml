@@ -1,0 +1,84 @@
+# ———— core metadata + setuptools —————————————————————————————————————————————
+
+[build-system]
+requires = ["setuptools"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "dependency-abstractor"
+description = "Abstract dependency graph generator for user-installed packages"
+readme = "README.md"
+requires-python = ">=3.8"
+license = {file = "COPYING"}
+keywords = ["apt", "dnf", "flatpak", "visualization", "disk", "usage"]
+authors = [
+    {name = "Okko Hartikainen", email = "okko.hartikainen@yandex.com"}
+]
+classifiers = [
+    "Environment :: Console",
+    "Environment :: Console :: Curses",
+    "Intended Audience :: End Users/Desktop",
+    "Intended Audience :: System Administrators",
+    "License :: OSI Approved :: GNU General Public License v3 (GPLv3)",
+    "Natural Language :: English",
+    "Operating System :: POSIX :: Linux",
+    "Programming Language :: Python :: 3",
+    "Topic :: Scientific/Engineering :: Visualization",
+    "Topic :: System",
+    "Topic :: System :: Installation/Setup",
+    "Topic :: System :: Software Distribution",
+    "Topic :: System :: Systems Administration",
+    "Topic :: Utilities",
+]
+dependencies = []
+dynamic = ["version"]
+
+[project.optional-dependencies]
+dev = [
+    "pylint>=2.5",
+    "pytest>=6.0",
+    "pytest-cov[all]",
+    "mypy>=0.900",
+]
+
+[project.scripts]
+dependency-abstractor = "dependency_abstractor:main"
+
+[project.urls]
+repository = "https://github.com/ninlith/dependency-abstractor.git"
+
+[tool.setuptools]
+zip-safe = true
+
+[tool.setuptools.dynamic]
+version = {attr = "dependency_abstractor.__version__"}
+
+# ———— pytest —————————————————————————————————————————————————————————————————
+
+[tool.pytest.ini_options]
+addopts = ["--import-mode=importlib", "--cov=dependency_abstractor"]
+markers = ["integration: mark a test as an integration test."]
+log_cli = true
+log_cli_level = "INFO"
+log_cli_format = "%(asctime)s [%(levelname)s] %(message)s (%(name)s)"
+log_cli_date_format = "%Y-%m-%d %H:%M:%S"
+
+# ———— pylint —————————————————————————————————————————————————————————————————
+
+[tool.pylint."MASTER"]
+init-hook = 'import sys; sys.path.append("dependency_abstractor")'
+
+[tool.pylint."IMPORTS"]
+ignored-modules = "apt_pkg, dnf"
+
+# ———— mypy ———————————————————————————————————————————————————————————————————
+
+[tool.mypy]
+files = "dependency_abstractor"
+ignore_missing_imports = true
+
+# ———— coverage ———————————————————————————————————————————————————————————————
+
+[tool.coverage.report]
+skip_covered = true
+show_missing = true
