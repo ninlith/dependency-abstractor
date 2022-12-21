@@ -8,9 +8,7 @@ Abstract[^abstract_usage] dependency graph generator for user-installed packages
 
 ## Installation
 ```
-git clone https://github.com/ninlith/dependency-abstractor.git && cd "!$:t:r"
-python3 -m zipapp dependency_abstractor -p "/usr/bin/env python3" -o executable
-mv executable ~/.local/bin/dependency-abstractor
+pip3 install git+https://github.com/ninlith/dependency-abstractor.git
 
 # optional (for sfdp):
 sudo $(command -v apt dnf | sed 1q) install graphviz
