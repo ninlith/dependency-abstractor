@@ -69,8 +69,9 @@ def post_process(package_collection):
             package_collection.move_up(identifier)
             moved_up.add(identifier)
     if moved_up:  #1277115
-        logger.debug("Presumed to be explicitly user-installed (possibly via "
-                     "GNOME Software or PackageKit-command-not-found) albeit "
-                     "not marked as such:")
+        message = ["Presumed to be explicitly user-installed (possibly via "
+                   "GNOME Software or PackageKit-command-not-found) albeit "
+                   "not marked as such:"]
         for identifier in sorted(moved_up):
-            logger.debug(f"  • {identifier}")
+            message.append(f"  • {identifier}")
+        logger.debug("\n".join(message))
