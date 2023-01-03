@@ -4,7 +4,7 @@
 import random
 import string
 import sys
-sys.path.extend(["dependency_abstractor", "../dependency_abstractor"])
+sys.path[1:1] = ["dependency_abstractor", "../dependency_abstractor"]
 from generic.terminal_colors import ColorString, query_terminal_colors
 
 def test_color_string():

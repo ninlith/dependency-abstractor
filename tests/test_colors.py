@@ -7,7 +7,7 @@ import random
 import sys
 import matplotlib.pyplot as plt
 import matplotlib as mpl
-sys.path.extend(["dependency_abstractor", "../dependency_abstractor"])
+sys.path[1:1] = ["dependency_abstractor", "../dependency_abstractor"]
 from generic.colors import *
 from generic.formulas import euclidean_distance
 

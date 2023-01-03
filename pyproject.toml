@@ -66,7 +66,7 @@ log_cli_date_format = "%Y-%m-%d %H:%M:%S"
 # ———— pylint —————————————————————————————————————————————————————————————————
 
 [tool.pylint."MASTER"]
-init-hook = 'import sys; sys.path.append("dependency_abstractor")'
+init-hook = 'import sys; sys.path.insert(1, "dependency_abstractor")'
 
 [tool.pylint."IMPORTS"]
 ignored-modules = "apt_pkg, dnf"

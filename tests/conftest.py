@@ -2,7 +2,7 @@
 
 import sys
 import pytest
-sys.path.append("dependency_abstractor")
+sys.path.insert(1, "dependency_abstractor")
 
 # https://docs.pytest.org/en/latest/example/simple.html#control-skipping-of-tests-according-to-command-line-option
 

@@ -10,7 +10,7 @@ import logging
 import sys
 from pathlib import Path
 from importlib import import_module
-sys.path.append(str(Path(__file__).resolve().parent))
+sys.path.insert(1, str(Path(__file__).resolve().parent))
 import config.cli
 from collectors import PackageManagerNotFoundError
 from config.log import setup_logging
@@ -35,6 +35,8 @@ def main():
     args = config.cli.parse_arguments()
     setup_logging(logging.DEBUG if args.debug else logging.INFO)
     logger.debug(f"{args = }")
+    logger.debug(f"{__package__ = }")
+    logger.debug(f"{sys.path = }")
 
     if (args.collector in ["fedora", "debian"]
             and (distro_ids := get_like_distro())
