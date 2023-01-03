@@ -1,4 +1,4 @@
-# Copyright 2022 Okko Hartikainen <okko.hartikainen@yandex.com>
+# Copyright 2022-2023 Okko Hartikainen <okko.hartikainen@yandex.com>
 # This work is licensed under the GNU GPLv3. See COPYING.
 
 """Flatpak collector."""
