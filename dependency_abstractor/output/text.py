@@ -10,7 +10,7 @@ import stat
 import sys
 from collections import namedtuple
 from dataclasses import asdict
-from pprint import pprint
+from pprint import pprint, pformat
 import config.cli
 from generic.converters import bytes_to_human_si
 from generic.formulas import min_max_normalize
@@ -58,12 +58,14 @@ def modal_print(lines, fit_terminal_width=True, fit_terminal_height=True):
 
 def details(package_collection, identifier):
     """Print details."""
+    lines = []
     n = len(identifier) + 2
-    print(f"╭{'─'*n}╮")
-    print(f"│ {identifier} │")
-    print(f"╰{'─'*n}╯")
-    print()
-    pprint(asdict(package_collection[identifier]))
+    lines.append(f"╭{'─'*n}╮")
+    lines.append(f"│ {identifier} │")
+    lines.append(f"╰{'─'*n}╯")
+    print("\n".join(lines))
+    logger.debug(f"{identifier in package_collection.top = }")
+    logger.debug("\n" + pformat(asdict(package_collection[identifier])))
     print()
 
 def get_candidate(package_collection, package):
