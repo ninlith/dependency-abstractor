@@ -2,6 +2,6 @@
 
 """Entry point."""
 
-from __init__ import main
+from script import main
 
 main()

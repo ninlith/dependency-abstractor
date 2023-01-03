@@ -5,7 +5,7 @@
 
 import argparse
 import sys
-from __init__ import __version__
+from script import __version__
 
 args = None
 

@@ -3,7 +3,7 @@
 import logging
 import math
 import pytest
-import __init__ as dependency_abstractor
+import script
 from collectors import PackageManagerNotFoundError
 from output import dot
 
@@ -15,9 +15,9 @@ def test_dependency_abstractor(collector, capsys):
     """Test package collection and DOT output."""
     try:
         package_collection = (
-            dependency_abstractor.manufacture_package_collection(collector))
+            script.manufacture_package_collection(collector))
         another_package_collection = (
-            dependency_abstractor.manufacture_package_collection(collector))
+            script.manufacture_package_collection(collector))
         assert list(package_collection.items()) == list(
             another_package_collection.items())
     except PackageManagerNotFoundError:

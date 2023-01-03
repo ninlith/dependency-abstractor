@@ -4,7 +4,7 @@ import logging
 import re
 import subprocess
 import pytest
-import __init__ as dependency_abstractor
+import script
 from collectors import PackageManagerNotFoundError
 from generic.formulas import linspace
 
@@ -15,7 +15,7 @@ def test_flatpak():
     """Test extension matching."""
     try:
         package_collection = (
-            dependency_abstractor.manufacture_package_collection("flatpak"))
+            script.manufacture_package_collection("flatpak"))
     except PackageManagerNotFoundError:
         pytest.skip("unavailable")
     n = len(package_collection)
