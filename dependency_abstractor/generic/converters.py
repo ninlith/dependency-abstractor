@@ -30,7 +30,7 @@ def human_to_bytes(string: str) -> int:
              "ZiB": 1024**7,
              "YiB": 1024**8}
     number, unit = string.split()
-    return int(float(number)*units[unit])
+    return int(float(number.replace(",", "."))*units[unit])
 
 def bytes_to_human_si(size: int | str) -> str:
     """Convert bytes to human-readable string that uses metric prefixes."""
