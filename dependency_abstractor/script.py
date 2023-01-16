@@ -52,8 +52,9 @@ def main():
         modal_print(bar_graph(package_collection))
     elif args.output_type == "details":
         candidate = get_candidate(package_collection, args.package)
-        details(package_collection, candidate)
-        raise NotImplementedError
+        modal_print(details(package_collection, candidate),
+                    fit_terminal_width=True,
+                    fit_terminal_height=False)
     elif args.output_type == "tui":
         raise NotImplementedError
 
