@@ -4,7 +4,7 @@
 
 """Abstract dependency graph generator for user-installed packages."""
 
-__version__ = "0.1dev0"
+__version__ = "0.1"
 
 import logging
 import sys
