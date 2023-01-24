@@ -13,7 +13,7 @@ import config.cli
 from collectors import PackageManagerNotFoundError
 from config.log import setup_logging
 from generic.system import Timer, get_like_distro
-from output import dot
+from output import dot, tui
 from output.text import modal_print, details, bar_graph, get_candidate
 
 logger = logging.getLogger(__name__)
@@ -56,7 +56,7 @@ def main():
                     fit_terminal_width=True,
                     fit_terminal_height=False)
     elif args.output_type == "tui":
-        raise NotImplementedError
+        tui.start(package_collection)
 
 if __name__ == "__main__":
     main()
