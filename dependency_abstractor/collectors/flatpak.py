@@ -27,7 +27,7 @@ def get_extensions_points(installation, kind, ref):
     path = path / kind / ref / "active" / "metadata"
 
     extension_points = []
-    metadata = configparser.ConfigParser()
+    metadata = configparser.ConfigParser(strict=False)
     metadata.read(path)
     for section in metadata.sections():
         if name := re.findall(r"^Extension ([^@]*)@?(.*)", section):
